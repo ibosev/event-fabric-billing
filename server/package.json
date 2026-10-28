@@ -1,0 +1,37 @@
+{
+  "name": "event-fabric-billing-server",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Billing server on EventFabric: event-sourced billing and ordinary settings CRUD on Postgres and RabbitMQ",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24.15"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint dist",
+    "types": "tsc --noCheck && event-fabric types --config dist/types.config.js",
+    "check": "tsc && eslint dist && event-fabric types --check --config dist/types.config.js",
+    "migrate": "node --env-file-if-exists=.env node_modules/event-fabric/dist/cli/main.js migrate --config dist/event-fabric.config.js",
+    "start": "node --env-file-if-exists=.env dist/main.js",
+    "smoke": "node dist/smoke.js",
+    "smoke:docker": "c=\"docker compose -p event-fabric-billing-smoke -f compose.yml -f compose.smoke.yml\"; $c run --rm --build smoke; s=$?; $c down -v; exit $s",
+    "test": "node --test dist/*.test.js",
+    "test:settings": "node --test dist/settings.integration.js",
+    "test:postgres": "node --test dist/dunning-postgres.integration.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.9",
+    "event-fabric": "file:../../event-fabric",
+    "mongodb": "^7.7.0",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.23.1",
+    "eslint": "^10.12.0",
+    "typescript": "^7.0.2"
+  }
+}

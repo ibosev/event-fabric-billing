@@ -1,0 +1,14 @@
+# The smoke test's own stack, next to the dev one: `npm run smoke:docker` starts it under
+# another project name, so it gets its own volumes, and deletes it afterwards. Without host
+# ports it cannot clash with the dev stack; the smoke container reaches `lb` inside.
+services:
+  postgres:
+    ports: !reset []
+  settings-postgres:
+    ports: !reset []
+  mongo:
+    ports: !reset []
+  rabbitmq:
+    ports: !reset []
+  lb:
+    ports: !reset []

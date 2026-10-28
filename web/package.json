@@ -1,0 +1,30 @@
+{
+  "name": "event-fabric-billing-web",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Billing CRM: justcore modules written in SolidJS, state in nanostores, Flowbite on Tailwind CSS",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "tsc --noEmit",
+    "test": "node --test \"src/**/*.test.ts\""
+  },
+  "dependencies": {
+    "@nanostores/solid": "^1.1.1",
+    "justcore": "file:../../justcore",
+    "nanostores": "^1.5.5",
+    "solid-js": "^1.9.17"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.10.1",
+    "flowbite": "^4.0.2",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.5",
+    "vite-plugin-solid": "^2.11.14"
+  }
+}
